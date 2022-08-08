@@ -11,22 +11,18 @@ interface Post {
   attributes: Attributes
   id: number
 }
-interface HomePgeProps {
+interface PostsPageProps {
   posts: Post[];
 }
 
-const Home: NextPage<HomePgeProps> = ({ posts }) => {
-
-
+const Posts: NextPage<PostsPageProps> = ({ posts }) => {
   return (
     <div>
       <header>
-        <h1>Simon Blog</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adip</p>
+        <h1>All Posts</h1>
       </header>
       <main>
-        <h3>Latest Posts</h3>
-        {posts.slice(0, 5).map((post, index) => (
+        {posts.map((post, index) => (
           <Link key={index} href={`/posts/${post.id}`}>
             <div
               style={{
@@ -47,16 +43,14 @@ const Home: NextPage<HomePgeProps> = ({ posts }) => {
   )
 }
 
-export default Home;
+export default Posts;
 
 export const getServerSideProps = async () => {
   const res = await axios.get('http://localhost:1337/api/posts');
-
-
-
   return {
     props: {
       posts: res.data.data
     }
   }
 }
+

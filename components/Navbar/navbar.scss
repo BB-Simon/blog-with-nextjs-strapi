@@ -1,0 +1,14 @@
+.navbar {
+  padding: 1em 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ul {
+    margin: unset;
+    list-style: none;
+    padding: unset;
+  }
+}
